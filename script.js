@@ -1,4 +1,3 @@
-// Function to handle the form submission and trigger the API request
 document.getElementById('submit_button').addEventListener('click', function() {
     const countryName = document.getElementById('country_name').value.trim();
     if (countryName) {
@@ -8,12 +7,10 @@ document.getElementById('submit_button').addEventListener('click', function() {
     }
 });
 
-// Function to fetch country information from the REST Countries API
 function fetchCountryInfo(countryName) {
     const url = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`;
 
-    fetch(url)
-        .then(response => {
+    fetch(url).then(response => {
             if (!response.ok) {
                 throw new Error('Country not found');
             }
@@ -27,7 +24,6 @@ function fetchCountryInfo(countryName) {
         });
 }
 
-// Function to display the country information
 function displayCountryInfo(country) {
     const countryInfoSection = document.getElementById('country-info');
     countryInfoSection.innerHTML = `
@@ -39,7 +35,6 @@ function displayCountryInfo(country) {
         <img src="${country.flags.svg}" alt="Flag" style="width: 100px;">
     `;
 
-    // Fetching neighboring countries if they exist
     if (country.borders) {
         displayNeighbouringCountries(country.borders);
     } else {
@@ -48,7 +43,6 @@ function displayCountryInfo(country) {
     }
 }
 
-// Function to fetch and display neighboring countries
 function displayNeighbouringCountries(borders) {
     const borderingCountriesSection = document.getElementById('bordering-countries');
     borderingCountriesSection.innerHTML = '<h4>Bordering Countries:</h4><ul id="neighbours-list"></ul>';
@@ -75,7 +69,6 @@ function displayNeighbouringCountries(borders) {
     });
 }
 
-// Function to display error message
 function displayError(errorMessage) {
     const countryInfoSection = document.getElementById('country-info');
     countryInfoSection.innerHTML = `<p style="color:red;">Error: ${errorMessage}</p>`;
