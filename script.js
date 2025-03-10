@@ -46,9 +46,7 @@ function displayCountryInfo(country) {
 function displayNeighbouringCountries(borders) {
     const borderingCountriesSection = document.getElementById('bordering-countries');
     borderingCountriesSection.innerHTML = '<h4>Bordering Countries:</h4><ul id="neighbours-list"></ul>';
-    
     const neighboursList = document.getElementById('neighbours-list');
-    
     borders.forEach(border => {
         const url = `https://restcountries.com/v3.1/alpha/${border}`;
         fetch(url)
